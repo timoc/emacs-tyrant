@@ -7,16 +7,17 @@
 
 - Context and Quickstart
 
-  This readme, and the rant below is pretty much as a created it when
-  first making the tyrant. I've updated it for this github reasase, but
+  This README, and the rant below is pretty much as a created it when
+  first making the tyrant. I've updated it for this github release, but
   the rant is me telling myself why i went down this path and what i
   love and hate about emacs.
 
-  To test out the tyrant for youeself without crapping over your current
+  To test out the tyrant for yourself without crapping over your current
   emacs config method, simply use these shell commands, or similar:
-#+BEGIN_SRC sh
+#+BEGIN_SRC sh :tangle no
 mkdir testtyrant
 cd testtyrant
+mkdir tmp
 git clone https://github.com/timoc/emacs-tyrant .emacs.d
 HOME=$(pwd) emacs
 #+END_SRC
@@ -136,19 +137,21 @@ HOME=$(pwd) emacs
 
   The workflow therefore is something like this:
 
-  10. - You work on a project, and develop a workflow/process as you work.
-  20. - You pause your project work to tweak your Emacs config to improve your workflow/process for the project.
-  30. - IF *yak shaving* THEN
+#+BEGIN_SRC
+  10 You work on a project, and develop a workflow/process as you work.
+  20 You pause your project work to tweak your Emacs config to improve your workflow/process for the project.
+  30 IF *yak shaving* THEN
          GOTO 20
       ELSE
          GOTO 10
-
+#+END_SRC
   - Update 2:
-  After blithely promising a release of the tyrant on reddit, i realize
-  it is not release quality, and that i'm better off trying to take the
-  tyrant approach to spacemacs, which has the bonus of a community
-  behind it. So I'm working on the 7th re-build of my emacs
-  configuration.
+  After blithely promising a release of the full bash+emacs tyrant on
+  reddit, i realize it is all not release quality. Also that i'm better
+  off trying to take the tyrant approach to just spacemacs, which has
+  the bonus of a community behind it. So I'm now working on the 7th
+  re-build of my emacs configuration from the less than shattered
+  remains of my tyrant config. Tyrannical mission accomplished!
 
   org-mode and tangling is the only sophisticated way forward. as you
   can see from my examples below,
