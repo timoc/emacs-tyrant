@@ -5,6 +5,24 @@
 #+CATEGORY: EmacsRC
 #+KEYWORDS: Emacs config git
 
+- Context and Quickstart
+
+  This readme, and the rant below is pretty much as a created it when
+  first making the tyrant. I've updated it for this github reasase, but
+  the rant is me telling myself why i went down this path and what i
+  love and hate about emacs.
+
+  To test out the tyrant for youeself without crapping over your current
+  emacs config method, simply use these shell commands, or similar:
+#+BEGIN_SRC sh
+mkdir testtyrant
+cd testtyrant
+git clone https://github.com/timoc/emacs-tyrant .emacs.d
+HOME=$(pwd) emacs
+#+END_SRC
+  enjoy.
+- Tim O'C
+
 * A rant about my Emacs config and why i became a tyrant
 
   Some people reading this will be like WTF!, why are you still using
