@@ -148,10 +148,11 @@ HOME=$(pwd) emacs
   - Update 2:
   After blithely promising a release of the full bash+emacs tyrant on
   reddit, i realize it is all not release quality. Also that i'm better
-  off trying to take the tyrant approach to just spacemacs, which has
-  the bonus of a community behind it. So I'm now working on the 7th
-  re-build of my emacs configuration from the less than shattered
-  remains of my tyrant config. Tyrannical mission accomplished!
+  off trying to split out the emacs tyrant approach and move it to
+  spacemacs, which has the bonus of a community behind it. So I'm now
+  working on the 7th re-build of my emacs configuration from the less
+  than shattered remains of my tyrant config. Tyrannical mission
+  accomplished!
 
   org-mode and tangling is the only sophisticated way forward. as you
   can see from my examples below,
