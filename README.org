@@ -1,6 +1,6 @@
-# -*- mode: org; mode:auto-revert; -*-
+c# -*- mode: org; mode:auto-revert; -*-
 #+TITLE: Emacs Tyrant Configuration
-#+DESCRIPTION: The Tyrany of the default configuration
+#+DESCRIPTION: The Tyranny of the default configuration
 #+STARTUP: nohideblocks
 #+CATEGORY: EmacsRC
 #+KEYWORDS: Emacs config git
@@ -10,20 +10,20 @@
   Some people reading this will be like WTF!, why are you still using
   Emacs? We're in a new GUI century! Why not <insert other editor here>.
   Its simple. Emacs is not an Editor. Its a kind of meta-workflow-model
-  manager, with its own internal scriping language (elisp in this case).
+  manager, with its own internal scripting language (elisp in this case).
 
-  Emacs lets you synthesise the output of many processes into a single
-  text based visualisation, and define your own personal workflow, or
-  workflow's pioneered in the emacs community. It allows you to work
+  Emacs lets you synthesize the output of many processes into a single
+  text based visualization, and define your own personal workflow, or
+  workflows pioneered in the Emacs community. It allows you to work
   without the need of reaching for a mouse. It allows you to quickly
   remove slack/bumps from your workflow using macros or functions. This
-  is why most emacsers first question about a new tool etc, is 'can i
-  use it in emacs?'.
+  is why most Emacsers first question about a new tool etc, is 'can i
+  use it in Emacs?'.
 
-  Its kind of a stockholm syndrome, or example of sunk costs fallacy.
-  You invest so much time in emacs you need to have it emacsable or it
-  causes cognative dissonence. If it does not work in emacs, you want it
-  to have emacs keybindings to keep the dissonence to a reasonable
+  Its kind of a Stockholm syndrome, or example of sunk costs fallacy.
+  You invest so much time in Emacs you need to have it Emacsable or it
+  causes cognitive dissonance. If it does not work in Emacs, you want it
+  to have Emacs key-bindings to keep the dissonance to a reasonable
   level.
 
   Regardless, I know this but I'm still working with it :)
@@ -71,9 +71,9 @@
   el-get, that will lower my general WTF, and give my duct-tape usage
   labels, warnings and longevity.
 
-  I've also realised that this Emacs is not an editor, as much as a lisp
+  I've also realized that this Emacs is not an editor, as much as a lisp
   IDE that can be used to run lisp programs to help me edit anything. My
-  configuration is in fact a lisp program running inside a relativly
+  configuration is in fact a lisp program running inside a relatively
   unknown lisp environment.
 
   So I have made a decision to run only Emacs 24+, on Linux and
@@ -89,13 +89,13 @@
   The reasoning for moving all of this into two big files + machine
   includes is simple. After using the split up method for some time
   I've come to the conclusion it is actually harder to maintain. This
-  may seem counter-intuitive, but it seems to be true. Bouns feature:
+  may seem counter-intuitive, but it seems to be true. Bonus feature:
   easier to replicate across machines.
 
   The biggest problem with the longevity of any of my zemacsian
-  conifuration has been adaptability. Decisions made to patch up a
+  configuration has been adaptability. Decisions made to patch up a
   feature or to make life a bit easier don't lend themselves to lengthy
-  explination in elisp commentary. Also i find myself commenting out
+  explanation in elisp commentary. Also i find myself commenting out
   stuff, and crufting links into the file for want of somewhere else to
   keep them.
 
@@ -109,24 +109,24 @@
 
   - Update:
 
-  After listening to an emacs chat episode, i have decided to adjust
+  After listening to an Emacs chat episode, i have decided to adjust
   the plan for tyranny a bit. That is, to focus on developing
-  workflows. That seems to be the natural way for emacs configuration
-  files to evolve. This makes sense, as you apply emacs to a new
+  workflows. That seems to be the natural way for Emacs configuration
+  files to evolve. This makes sense, as you apply Emacs to a new
   situation, you tend to want to configure it to make your life
   easier.
 
   The workflow therefore is something like this:
 
   10. - You work on a project, and develop a workflow/process as you work.
-  20. - You pause your project work to tweak your emacs config to improve your workflow/process for the project.
+  20. - You pause your project work to tweak your Emacs config to improve your workflow/process for the project.
   30. - IF *yak shaving* THEN
          GOTO 20
       ELSE
          GOTO 10
 
   - Update 2:
-  After blithley promising a release of the tyrant on reddit, i realise
+  After blithely promising a release of the tyrant on reddit, i realize
   it is not release quality, and that i'm better off trying to take the
   tyrant approach to spacemacs, which has the bonus of a community
   behind it. So I'm working on the 7th re-build of my emacs
@@ -152,10 +152,10 @@
   maintain their own .init files.
 
 *** Tyrant Framework Creation [f9] key
-    A core part of the tyrant approach is to minimise yak shaving
+    A core part of the tyrant approach is to minimize yak shaving
     when dealing with process changes. That is to define fast keys to
     access all of the process/workflow configuration files, so that if
-    a process optimisation idea comes up i can sketch it in, or at
+    a process optimization idea comes up i can sketch it in, or at
     least mind dump the information into the workflow notes.
 
 *** notes on org-mode tangle/untangle usage
@@ -167,7 +167,7 @@
     configured to do so.
 
     - Bootstrap init.el to setup org-mode and other paths
-    - use el-get bundle to initiailise
+    - use el-get bundle to initialize
 
     - using toc: and toc@ to prefix my personal fns and variables
       | Symbol Prefix | Symbol type |
@@ -182,7 +182,7 @@
 
 * Example Emacs Tyrant configuration begins here
 
-*** DONE Tryant Emacs version checking
+*** DONE Tyrant Emacs version checking
 #+BEGIN_SRC emacs-lisp
   ;; -*- mode: emacs-Lisp; mode:auto-revert; outline-minor-mode:t; tab-width:3; -*-
   ;; Copyright (C) 1989-2016  Tim O'Callaghan
@@ -299,7 +299,7 @@
 *** DONE toc@ helper functions
 
   These are currently all in this section, but will be split
-  appropriatly and defined allongside the places that use them.
+  appropriately and defined alongside the places that use them.
 
   this will give an example of how i use tyrant to manage my own
   user functions.
