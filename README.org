@@ -1,4 +1,4 @@
-# -*- mode: org; mode:auto-revert; -*-
+<# -*- mode: org; mode:auto-revert; -*-
 #+TITLE: Emacs Tyrant Configuration
 #+DESCRIPTION: The Tyranny of the default configuration
 #+STARTUP: nohideblocks
@@ -15,18 +15,20 @@
   To test out the tyrant for yourself without crapping over your current
   emacs config method, simply use these shell commands, or similar:
 #+BEGIN_SRC sh :tangle no
+mkdir -p testtyrant/tmp; cd testtyrant; git clone https://github.com/timoc/emacs-tyrant .emacs.d ; HOME=$(pwd) emacs
+#+END_SRC
+or if you prefer:
+#+BEGIN_SRC sh :tangle no
 mkdir testtyrant
 cd testtyrant
 mkdir tmp
 git clone https://github.com/timoc/emacs-tyrant .emacs.d
 HOME=$(pwd) emacs
 #+END_SRC
-or:
-#+BEGIN_SRC sh :tangle no
-mkdir -p testtyrant/tmp; cd testtyrant; git clone https://github.com/timoc/emacs-tyrant .emacs.d ; HOME=$(pwd) emacs
-#+END_SRC
+
   enjoy.
-- Tim O'C
+  *Tim O'C*
+
 
 * A rant about my Emacs config and why i became a tyrant
 
@@ -526,7 +528,8 @@ and so is marked as not-tangled.
   ;; (add-hook 'compilation-finish-functions #'toc@compile-finish)
 #+END_SRC
 *** DONE Projectile project manager + active scratch buffer startup
-  projectile project management log last projects to startup scratch
+  add projectile project management log last projects to startup scratch
+  (commented out)
 
   http://batsov.com/projectile/
 #+BEGIN_SRC emacs-lisp
@@ -535,10 +538,8 @@ and so is marked as not-tangled.
     (setq initial-scratch-message
           (concat
            ;; scatch is for evauating Elisp after all
-           "#+BEGIN_SRC emacs-lisp\n\n\n#+END_SRC\n"
-           "# Recent projects\n\n"
-           (mapconcat (apply-partially #'format " - %s")
-                      (projectile-relevant-known-projects) "\n")))
+           "#+TITLE:Welcome to Emacs Tyrant!\nIgnore the warnings in the other window, they only occur during setup/updates.\nScratch is an now org-mode buffer - here is where you can eval lisp :)\n#+BEGIN_SRC emacs-lisp\n\n\n#+END_SRC\n"
+           ))
     (run-with-idle-timer 0.1 nil (lambda ()
                                    (with-current-buffer "*scratch*"
                                      (org-mode)
