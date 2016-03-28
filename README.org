@@ -205,6 +205,12 @@ HOME=$(pwd) emacs
       | toc@          | function    |
     - using tyrant: and tyrant@ to prefix tyrant fns and variables
 
+    - As it recreates the emacs init.el based on a literate source, it
+      separates the configuration from the local packages, to allow
+      you to store your dotfiles in a dropbox folder, so painless
+      update of configs between machines. Works out of the box, but is
+      as yet not well documented.
+
 **** DONE Create initial bootstrap and tyrant checker
      [X] Create function to speed parse org-tangled config files
      include files with site tweaks
@@ -463,10 +469,9 @@ and so is marked as not-tangled.
               (ggtags-mode 1)))))
 
 #+END_SRC
-
-- doxymacs/doxygen
+***** TODO doxymacs/doxygen
       https://github.com/timoc/epydoc-el
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle no
   (el-get-bundle doxymacs
       (defun toc@doxymacs-font-lock-hook ()
         (if (or (eq major-mode 'c-mode) (eq major-mode 'c++-mode))
