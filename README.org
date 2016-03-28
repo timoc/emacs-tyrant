@@ -1,0 +1,435 @@
+# -*- mode: org; mode:auto-revert; -*-
+#+TITLE: Emacs Tyrant Configuration
+#+DESCRIPTION: The Tyrany of the default configuration
+#+STARTUP: nohideblocks
+#+CATEGORY: EmacsRC
+#+KEYWORDS: Emacs config git
+
+* A rant about my Emacs config and why i became a tyrant
+
+  Some people reading this will be like WTF!, why are you still using
+  Emacs? We're in a new GUI century! Why not <insert other editor here>.
+  Its simple. Emacs is not an Editor. Its a kind of meta-workflow-model
+  manager, with its own internal scriping language (elisp in this case).
+
+  Emacs lets you synthesise the output of many processes into a single
+  text based visualisation, and define your own personal workflow, or
+  workflow's pioneered in the emacs community. It allows you to work
+  without the need of reaching for a mouse. It allows you to quickly
+  remove slack/bumps from your workflow using macros or functions. This
+  is why most emacsers first question about a new tool etc, is 'can i
+  use it in emacs?'.
+
+  Its kind of a stockholm syndrome, or example of sunk costs fallacy.
+  You invest so much time in emacs you need to have it emacsable or it
+  causes cognative dissonence. If it does not work in emacs, you want it
+  to have emacs keybindings to keep the dissonence to a reasonable
+  level.
+
+  Regardless, I know this but I'm still working with it :)
+
+  Why the tyrant? I've been using Emacs for many many years, my hands
+  speak its language. I started with Emacs, but then for a long time i
+  preferred XEmacs because of the easier package managment, and some
+  other subtleties, but i still used Emacs on other systems. In general
+  i had an Emacs config that worked for XEmacs and Emacs on Windows,
+  Linux, *nix and VMS (yes, VMS!).
+
+  Suffice it to say I've gone through Emacs config bankruptcy more than
+  once. I've not kept count, but this is probably the 6Th re-build from
+  the shattered ruins of previous configurations.
+
+  The problem is that (x)Emacs is too big and too complex, like some
+  kind of spherical Swiss army knife with all the blades extended.
+
+  That is the sweet spot and the fatal flaw. The configuration files are
+  like duct-tape on top of it to make it easier to get a handle on, use
+  and understand.
+
+  You can duct-tape Emacs to work intuitively with your thought
+  processes, but it takes constant vigilance! You need to maintain the
+  duct tape or package changes, and differences between Emacs versions
+  poke through and sting or cut you during every day use... and out
+  comes the duct tape to fix it up again.
+
+  Actually it is worse than that. It is more like the knife is one that
+  someone has already used and put down for you to pick up and use. That
+  is why its my common practice to try and *set everything* when i
+  install a package. Bitter experience has shown that if i do not, then
+  someone else will, and things change without notice. My Emacs-foo is
+  not up to watching this (advice on defcustom?) but it will.....
+
+  I've looked at my current Emacs config too many times and gone WTF!?
+  it has had a good run, must be 3 years? more? So why now? Why a total
+  re-build?
+
+  Well I've discovered that org-mode is in Emacs 24, and org-babel, the
+  tool that lets you "tangle" source code like elisp into an org-mode
+  document is also part of it. I've done some experimental configuration
+  with using it for my org-mode configuration, and it looks good. I
+  think i can get something maintainable using it in conjunction with
+  el-get, that will lower my general WTF, and give my duct-tape usage
+  labels, warnings and longevity.
+
+  I've also realised that this Emacs is not an editor, as much as a lisp
+  IDE that can be used to run lisp programs to help me edit anything. My
+  configuration is in fact a lisp program running inside a relativly
+  unknown lisp environment.
+
+  So I have made a decision to run only Emacs 24+, on Linux and
+  Windows. If need VMS, or other *nixes, i can use remote editing.
+  There were issues for remote file editing on VMS, which i can fix,
+  if i need to work on VMS again. I no longer try and keep it XEmacs
+  compatible, now that Emacs has native package management and decent
+  tramp/VMS ftp support.
+
+  I have also decided to put almost-everything into one or two big
+  org-mode files.
+
+  The reasoning for moving all of this into two big files + machine
+  includes is simple. After using the split up method for some time
+  I've come to the conclusion it is actually harder to maintain. This
+  may seem counter-intuitive, but it seems to be true. Bouns feature:
+  easier to replicate across machines.
+
+  The biggest problem with the longevity of any of my zemacsian
+  conifuration has been adaptability. Decisions made to patch up a
+  feature or to make life a bit easier don't lend themselves to lengthy
+  explination in elisp commentary. Also i find myself commenting out
+  stuff, and crufting links into the file for want of somewhere else to
+  keep them.
+
+  The last piece of the puzzle that is tangling with org-mode, now that
+  it seems to be working. Using org-mode, and tangling gives me two
+  advantages. Firstly, a clean separation between rant like
+  documentation, links etc. and code. Secondly, the ability to throw
+  "TASK" into the config code and have my task managment tool (org agenda
+  in this case!) pick up the note to self, so when i next am in the mood
+  for [[http://en.wiktionary.org/wiki/yak_shaving][yak shaving]] i can do it with more efficiency :)
+
+  - Update:
+
+  After listening to an emacs chat episode, i have decided to adjust
+  the plan for tyranny a bit. That is, to focus on developing
+  workflows. That seems to be the natural way for emacs configuration
+  files to evolve. This makes sense, as you apply emacs to a new
+  situation, you tend to want to configure it to make your life
+  easier.
+
+  The workflow therefore is something like this:
+
+  10. - You work on a project, and develop a workflow/process as you work.
+  20. - You pause your project work to tweak your emacs config to improve your workflow/process for the project.
+  30. - IF *yak shaving* THEN
+         GOTO 20
+      ELSE
+         GOTO 10
+
+  - Update 2:
+  After blithley promising a release of the tyrant on reddit, i realise
+  it is not release quality, and that i'm better off trying to take the
+  tyrant approach to spacemacs, which has the bonus of a community
+  behind it. So I'm working on the 7th re-build of my emacs
+  configuration.
+
+  org-mode and tangling is the only sophisticated way forward. as you
+  can see from my examples below,
+
+  - it helps me maintain my work in progress yak shavings alongside my
+    working configurations.
+
+  - I can embed the notes for the 'inspirational' source material i used
+    to create a given personal helper
+
+  - I can filter at the babel-src level and at the document level
+
+  - I can publish my emacs config to github and make it readable.
+
+  My tyrant has been working so well and serving me goodness for over 2
+  years, so i think, publish and be damned!
+
+  Hopefully this will benefit those who want a sophisticated way to
+  maintain their own .init files.
+
+*** Tyrant Framework Creation [f9] key
+    A core part of the tyrant approach is to minimise yak shaving
+    when dealing with process changes. That is to define fast keys to
+    access all of the process/workflow configuration files, so that if
+    a process optimisation idea comes up i can sketch it in, or at
+    least mind dump the information into the workflow notes.
+
+*** notes on org-mode tangle/untangle usage
+    org babel has some explicit rules for managing untangling.
+    - :tangle no - to turn off untangling
+    - :tangle filename to export support code/shell scripts etc.
+
+    org-mode export can also filter on tags such as :noexport: if
+    configured to do so.
+
+    - Bootstrap init.el to setup org-mode and other paths
+    - use el-get bundle to initiailise
+
+    - using toc: and toc@ to prefix my personal fns and variables
+      | Symbol Prefix | Symbol type |
+      |---------------+-------------|
+      | toc:          | variable    |
+      | toc@          | function    |
+    - using tyrant: and tyrant@ to prefix tyrant fns and variables
+
+**** DONE Create initial bootstrap and tyrant checker
+     [X] Create function to speed parse org-tangled config files
+     include files with site tweaks
+
+* Example Emacs Tyrant configuration begins here
+
+*** DONE Tryant Emacs version checking
+#+BEGIN_SRC emacs-lisp
+  ;; -*- mode: emacs-Lisp; mode:auto-revert; outline-minor-mode:t; tab-width:3; -*-
+  ;; Copyright (C) 1989-2016  Tim O'Callaghan
+  ;;
+  ;; This file is free software licensed under the terms of the
+  ;; MIT License.
+  ;;
+  ;;
+  (defconst ze:flavour-tested-on
+    '("GNU Emacs 24.2.1 (x86_64-unknown-linux-gnu, GTK+ Version 2.18.9)"
+      "GNU Emacs 24.3.1 (x86_64-pc-linux-gnu, GTK+ Version 3.4.2)\n of 2013-04-14 on chindi10, modified by Debian"
+      "GNU Emacs 24.3.1 (x86_64-pc-linux-gnu, GTK+ Version 3.10.7)\n of 2014-03-07 on lamiak, modified by Debian"
+      ))
+
+#+END_SRC
+
+*** DONE Export Constants
+  #+BEGIN_SRC emacs-lisp
+  (message "++ set org source directories.")
+  (defconst ze:gtd-dir (expand-file-name (concat ze:home-dir "/1-ORG_SHARED/")))
+  (defconst ze:org-dir (expand-file-name (concat ze:gtd-dir "/1-PROCESS_GTD/")))
+  (message "-- MEYN orgrc end")
+  #+END_SRC
+
+*** DONE emacs baseline configuration changes
+  These are the changes that need to be done to make life bearable
+  before doing anything else.
+
+#+BEGIN_SRC emacs-lisp
+  (message "++ Baseline changes")
+
+  ;; general zemacsen config
+  (fset 'yes-or-no-p 'y-or-n-p)       ; y/n not yes/no
+  (setq make-backup-files nil)        ; stop creating those backup~ files
+  (setq auto-save-default nil)        ; stop creating those #auto-save# files
+  (setq debug-on-error t)             ; throw error if problem in config file
+  (setq tab-width 8)                  ; tabs; normal is 8
+  (setq global-auto-revert-mode t)    ; stop asking about changed local file
+  (setq require-final-newline t)      ; as it says
+  (setq-default indent-tabs-mode nil) ; tabs are evil by default
+  (setq inhibit-startup-message t)    ; loose the startup message
+  (setq message-log-max t)            ; keep messages in buffer
+  (setq enable-local-variables :safe) ; enable save local var processing
+  (menu-bar-mode t)                   ; menu bar on
+  (toggle-scroll-bar -1)              ; no scroll bar
+  (setq scroll-margin 3)              ; flip page 3 lines away from top/bottom
+  (tool-bar-mode -1)                  ; no tool bar
+  (blink-cursor-mode -1)              ; no blinky toolbar
+  (prefer-coding-system 'utf-8)       ; default to utf-8
+
+  ;; highlited region handling
+  (delete-selection-mode)             ; delete highligted regions with <del>
+  (transient-mark-mode 1)             ; highlight regions
+
+  ;; I must have parenthesis highlighting
+  (show-paren-mode t)
+  (show-paren-mode 'mixed)
+
+  ;; turn off annoying mouse behaviour
+  (setq mouse-drag-copy-region nil)
+  ;; (mouse-avoidance-mode 'banish)
+
+  ;; use firefox to open new tabs for links
+  (require 'browse-url)
+  (setq browse-url-browser-function 'browse-url-generic)
+  (setq browse-url-generic-program ze:browser-binary)
+  (setq browse-url-firefox-program ze:browser-binary)
+  (setq browse-url-firefox-new-window-is-tab t)
+
+  ;; set no length of eval expression return
+  (setq eval-expression-print-length nil)
+
+  ;; set default color-theme embedded emacs 24 (e.g. deeper-blue)
+  ;;(el-get-bundle reykjavik
+  ;;  :url "https://github.com/mswift42/reykjavik-theme.git"
+  ;;  :features reykjavik-theme)
+  ;; (load-theme reykjavik-theme)
+  ;; (load-theme 'manoj-dark)
+  (el-get-bundle cyberpunk-theme)
+  (load-theme 'cyberpunk t)
+
+
+#+END_SRC
+
+*** DONE set external environment PATHS and programs
+
+  this collection of references to other programs that can be
+  overridden in the machine local configs.
+
+  - [ ] check for external 'tyrant' bash/zsh environment and use that
+  - [ ] Push these settings down into the init.el (tyrant check functions)
+
+#+BEGIN_SRC emacs-lisp
+  (message "++ paths and programs")
+  ;; paths abd binaries to add to the system PATH
+  (cond (ze:linux-p
+         (ze@add-dir-to-env "PATH"
+                             '("~/usr/bin/"
+                               "~/usr/box/bin/"
+                               "~/usr/local/bin/")
+                             t))
+        (ze:win32-p
+         ;; set diff for windows
+         ;; (setq ediff-custom-diff-program "C:\\cygwin\\bin\\diff.exe")
+         ;; (setq ediff-diff-program "C:\\cygwin\\bin\\diff.exe")
+         (ze@add-dir-to-env "PATH"
+                             '("~/usr/local/win2k/"
+                               "~/usr/local/win2k/cmd/"
+                               t))
+         ))
+
+#+END_SRC
+
+*** DONE toc@ helper functions
+
+  These are currently all in this section, but will be split
+  appropriatly and defined allongside the places that use them.
+
+  this will give an example of how i use tyrant to manage my own
+  user functions.
+
+#+BEGIN_SRC emacs-lisp
+  (message "++ Helper Functions")
+#+END_SRC
+
+***** DONE (defun toc@copy-file-name-to-clipboard ()
+I've finished this on, so and so is exported.
+
+#+BEGIN_SRC emacs-lisp
+(defun toc@copy-file-name-to-clipboard ()
+  "Copy the current buffer file name to the clipboard."
+  (interactive)
+  (let ((filename (if (equal major-mode 'dired-mode)
+                      default-directory
+                    (buffer-file-name))))
+    (when filename
+      (kill-new filename)
+      (message "Copied buffer file name '%s' to the clipboard." filename))))
+
+#+END_SRC
+
+***** TODO update (defun toc@copy-file-name-to-clipboard ()
+This is an example on how to manage development. I'm working on this,
+and so is marked as not-tangled.
+
+#+BEGIN_SRC emacs-lisp :tangle no
+(defun toc@copy-file-name-to-clipboard ()
+  "Copy the current buffer file name to the clipboard."
+  (interactive)
+  (let ((filename (if (equal major-mode 'dired-mode)
+                      default-directory
+                    (buffer-file-name))))
+;; broken fix here!!!
+)))
+
+#+END_SRC
+
+* Example Package managment here
+
+*** example package group - C/C++ Development Environment
+- Autopair
+#+BEGIN_SRC emacs-lisp
+(el-get-bundle autopair
+   (require 'autopair)
+   (autopair-global-mode 0)
+   (setq autopair-blink t))
+
+#+END_SRC
+
+- Yaml mode for travis and ansible files
+#+BEGIN_SRC emacs-lisp
+(el-get-bundle yaml-mode)
+(el-get-bundle ansible-doc)
+
+#+END_SRC
+
+- ggtags
+#+BEGIN_SRC emacs-lisp
+(el-get-bundle ggtags
+  (add-hook 'c-mode-common-hook
+          (lambda ()
+            (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'asm-mode)
+              (ggtags-mode 1)))))
+
+#+END_SRC
+
+- doxymacs/doxygen
+      https://github.com/timoc/epydoc-el
+#+BEGIN_SRC emacs-lisp
+  (el-get-bundle doxymacs
+      (defun toc@doxymacs-font-lock-hook ()
+        (if (or (eq major-mode 'c-mode) (eq major-mode 'c++-mode))
+            (when (featurep 'doxymacs) (doxymacs-font-lock)))))
+
+#+END_SRC
+
+***** TODO C++ Template debugging helpers
+  example of Something i'm working on from the internet, that it not promoted to prime time.
+#+BEGIN_SRC emacs-lisp :tangle no
+  (require 'cl)
+
+  ;; (pushnew '("*compilation*"
+;;              (minibuffer . nil)
+;;              (unsplittable . t)
+;;              (menu-bar-lines . 0))
+;;            special-display-buffer-names)
+
+  (defun toc@find-dedicated-frames (buf)
+    (let (result)
+      (dolist (window (get-buffer-window-list buf t) result)
+        (let ((frame (window-frame window)))
+          (when (frame-parameter frame 'unsplittable)
+            (push frame result))))))
+
+  (defun toc@setup-compile-mode ()
+    ;; Support C++ better
+    (modify-syntax-entry ?< "(")
+    (modify-syntax-entry ?> ")")
+
+    (dolist (frame (toc@find-dedicated-frames (current-buffer)))
+      (let ((orig (frame-parameter frame 'orig-background)))
+        (when orig
+          (modify-frame-parameters
+           frame (list (cons 'background-color orig)))))))
+
+  ;; (add-hook 'compilation-mode-hook #'toc@setup-compile-mode)
+
+  (defun* toc@compile-finish (buf status)
+    (with-current-buffer buf
+      (let* ((color (if (string-match "^finished\\b" status)
+                        "#dfd"
+                      "#fdd"))
+             found)
+
+        (dolist (frame (toc@find-dedicated-frames buf))
+          (setq found t)
+          (modify-frame-parameters
+           frame
+           (list (cons 'background-color color)
+                 (cons 'orig-background
+                       (frame-parameter frame 'background-color)))))
+
+        (unless found
+          (let ((overlay)
+                (overlay (make-overlay (point-min) (point-max))))
+            (overlay-put overlay 'face (list :background color))
+            (overlay-put overlay 'evaporate t))))))
+
+  ;; (add-hook 'compilation-finish-functions #'toc@compile-finish)
+#+END_SRC
