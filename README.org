@@ -208,15 +208,82 @@ mkdir -p testtyrant/tmp; cd testtyrant; git clone https://github.com/timoc/emacs
 
 * Example Emacs Tyrant configuration begins here
 
+This is the notes/blurb that strarted the whole thing, before i created
+the rant, this was my thinking. Sophistication.
+
+#+BEGIN_SRC emacs-lisp
+;; -*- mode: emacs-Lisp; outline-minor-mode:t; tab-width:3; mode:auto-revert; -*-
+;; Copyright (C) 1989-2016  Tim O'Callaghan
+;;
+;; This file is free software licensed under the terms of the
+;; MIT License.
+;;
+
+;; Emacs Tyrant.
+;; (or with great power comes great configurability responsibility)
+;;
+;; To bring the Tyrany of the default to the emacs-masses.
+;;
+;; Before I get into it, its best that i lay bare the inconvienient
+;; truth of using a computer for anything. It is best described by
+;; Douglas Adams.
+;;
+;; "The History of every major Galactic Civilization tends to pass
+;; through three distinct and recognizable phases, those of:
+;;
+;; Survival, Inquiry and Sophistication
+;;
+;; otherwise known as the How, Why, and Where phases. For instance,
+;; the first phase is characterized by the question 'How can we eat?'
+;; the second by the question 'Why do we eat?' and the third by the
+;; question 'Where shall we have lunch?”
+;; - Douglas Adams, The Restaurant at the End of the Universe
+
+;;
+;; The Tyrant is here to pull your emacs configuration kicking and
+;; screaming to the sophistication stage. Rather than try to figure
+;; out how to do something, the tyrant will give you the workflows to
+;; start getting things done.
+;;
+;; The whole concept is based on a single shared emacs config that can work on
+;; multiple hosts and have local and shared configs using cloud storage. Using
+;; its bootstrapping it will sync your configuration across devices.
+;; NOTE: must have -*- mode:auto-revert -*- for bootstrapping to work properly
+
+;; This is built upon:
+
+;; this init file - which will bootstrap your whole local installation
+;; org-mode + org babel - to document the workflow
+;; el-get + git - to mangage the packages
+
+;;
+;; other tools:
+;; dropbox - used to syncrhoise changes across installations
+
+;; use:
+;; save this file as your init.el, create a README.org literate init.el
+;; update the ze variable to point to the appropriate place.
+;; start emacs
+
+;; to make maitainance easier, this sets up f9 as the faskey prefix for aching
+;; this file, your org file, and the untangled org files.
+
+;; note this is not for the timid yet. It is/was a work in progress. I've posted
+;; this as a gist, so others can use it to create their own lierate emacs. I'm
+;; currently looking to integrate this workflow + org mode approach into
+;; spacemace for Space tyrant!.
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; note on my function and variable definitions.
+;; Zaphod who was/is? president of the galaxy, is the current tyrant, so to
+;; avoid namespace clashes:
+;;
+;; ze:     zemacs tyrant configuration variable prefix
+;; ze@     zemacs tyrant function prefix
+#+END_SRC
+
 *** DONE Tyrant Emacs version checking
 #+BEGIN_SRC emacs-lisp
-  ;; -*- mode: emacs-Lisp; mode:auto-revert; outline-minor-mode:t; tab-width:3; -*-
-  ;; Copyright (C) 1989-2016  Tim O'Callaghan
-  ;;
-  ;; This file is free software licensed under the terms of the
-  ;; MIT License.
-  ;;
-  ;;
   (defconst ze:flavour-tested-on
     '("GNU Emacs 24.2.1 (x86_64-unknown-linux-gnu, GTK+ Version 2.18.9)"
       "GNU Emacs 24.3.1 (x86_64-pc-linux-gnu, GTK+ Version 3.4.2)\n of 2013-04-14 on chindi10, modified by Debian"
