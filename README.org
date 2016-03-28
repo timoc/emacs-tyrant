@@ -21,6 +21,10 @@ mkdir tmp
 git clone https://github.com/timoc/emacs-tyrant .emacs.d
 HOME=$(pwd) emacs
 #+END_SRC
+or:
+#+BEGIN_SRC sh :tangle no
+mkdir -p testtyrant/tmp; cd testtyrant; git clone https://github.com/timoc/emacs-tyrant .emacs.d ; HOME=$(pwd) emacs
+#+END_SRC
   enjoy.
 - Tim O'C
 
@@ -363,8 +367,7 @@ and so is marked as not-tangled.
 #+END_SRC
 
 * Example Package managment here
-
-*** example package group - C/C++ Development Environment
+*** DONE example package group - C/C++ Development Environment
 - Autopair
 #+BEGIN_SRC emacs-lisp
 (el-get-bundle autopair
@@ -454,4 +457,24 @@ and so is marked as not-tangled.
             (overlay-put overlay 'evaporate t))))))
 
   ;; (add-hook 'compilation-finish-functions #'toc@compile-finish)
+#+END_SRC
+*** DONE Projectile project manager + active scratch buffer startup
+  projectile project management log last projects to startup scratch
+
+  http://batsov.com/projectile/
+#+BEGIN_SRC emacs-lisp
+  (el-get-bundle projectile
+    (projectile-global-mode)
+    (setq initial-scratch-message
+          (concat
+           ;; scatch is for evauating Elisp after all
+           "#+BEGIN_SRC emacs-lisp\n\n\n#+END_SRC\n"
+           "# Recent projects\n\n"
+           (mapconcat (apply-partially #'format " - %s")
+                      (projectile-relevant-known-projects) "\n")))
+    (run-with-idle-timer 0.1 nil (lambda ()
+                                   (with-current-buffer "*scratch*"
+                                     (org-mode)
+                                     (flyspell-mode-off))))
+    )
 #+END_SRC
