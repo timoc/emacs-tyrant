@@ -1,5 +1,5 @@
-<# -*- mode: org; mode:auto-revert; -*-
-#+TITLE: Emacs Tyrant Configuration
+# -*- mode: org; mode:auto-revert; -*-
+#+TITLE: Emacs Tyrant
 #+DESCRIPTION: The Tyranny of the default configuration
 #+STARTUP: nohideblocks
 #+CATEGORY: EmacsRC
@@ -7,13 +7,15 @@
 
 - Context and Quickstart
 
-  This README, and the rant below is pretty much as a created it when
-  first making the tyrant. I've updated it for this github release, but
-  the rant is me telling myself why i went down this path and what i
-  love and hate about emacs.
+  This README, the rant below, and the lisp boilerplate about
+  sophistication is pretty much as a created it when first making the
+  tyrant. I've updated it for this github release, but left the rant
+  etc. It is me telling myself why i went down this path and what i
+  love and hate about Emacs. You should try it out yourself, its very
+  cathartic.
 
   To test out the tyrant for yourself without crapping over your current
-  emacs config method, simply use these shell commands, or similar:
+  Emacs config method, simply use these shell commands, or similar:
 #+BEGIN_SRC sh :tangle no
 mkdir -p testtyrant/tmp; cd testtyrant; git clone https://github.com/timoc/emacs-tyrant .emacs.d ; HOME=$(pwd) emacs
 #+END_SRC
@@ -29,8 +31,7 @@ HOME=$(pwd) emacs
   enjoy.
   *Tim O'C*
 
-
-* A rant about my Emacs config and why i became a tyrant
+* A rant about Emacs and why i became a config-tyrant
 
   Some people reading this will be like WTF!, why are you still using
   Emacs? We're in a new GUI century! Why not <insert other editor here>.
@@ -153,10 +154,10 @@ HOME=$(pwd) emacs
 #+END_SRC
   - Update 2:
   After blithely promising a release of the full bash+emacs tyrant on
-  reddit, i realize it is all not release quality. Also that i'm better
-  off trying to split out the emacs tyrant approach and move it to
+  reddit, i realize it is all not release quality. Also that I'm better
+  off trying to split out the Emacs tyrant approach and move it to
   spacemacs, which has the bonus of a community behind it. So I'm now
-  working on the 7th re-build of my emacs configuration from the less
+  working on the 7th re-build of my Emacs configuration from the less
   than shattered remains of my tyrant config. Tyrannical mission
   accomplished!
 
@@ -171,7 +172,7 @@ HOME=$(pwd) emacs
 
   - I can filter at the babel-src level and at the document level
 
-  - I can publish my emacs config to github and make it readable.
+  - I can publish my Emacs config to github and make it readable.
 
   My tyrant has been working so well and serving me goodness for over 2
   years, so i think, publish and be damned!
@@ -210,7 +211,7 @@ HOME=$(pwd) emacs
 
 * Example Emacs Tyrant configuration begins here
 
-This is the notes/blurb that strarted the whole thing, before i created
+This is the notes/blurb that started the whole thing, before i created
 the rant, this was my thinking. Sophistication.
 
 #+BEGIN_SRC emacs-lisp
@@ -224,9 +225,9 @@ the rant, this was my thinking. Sophistication.
 ;; Emacs Tyrant.
 ;; (or with great power comes great configurability responsibility)
 ;;
-;; To bring the Tyrany of the default to the emacs-masses.
+;; To bring the Tyranny of the default to the emacs-masses.
 ;;
-;; Before I get into it, its best that i lay bare the inconvienient
+;; Before I get into it, its best that i lay bare the inconvenient
 ;; truth of using a computer for anything. It is best described by
 ;; Douglas Adams.
 ;;
@@ -238,16 +239,16 @@ the rant, this was my thinking. Sophistication.
 ;; otherwise known as the How, Why, and Where phases. For instance,
 ;; the first phase is characterized by the question 'How can we eat?'
 ;; the second by the question 'Why do we eat?' and the third by the
-;; question 'Where shall we have lunch?”
+;; question 'Where shall we have lunch?'
 ;; - Douglas Adams, The Restaurant at the End of the Universe
 
 ;;
-;; The Tyrant is here to pull your emacs configuration kicking and
+;; The Tyrant is here to pull your Emacs configuration kicking and
 ;; screaming to the sophistication stage. Rather than try to figure
 ;; out how to do something, the tyrant will give you the workflows to
 ;; start getting things done.
 ;;
-;; The whole concept is based on a single shared emacs config that can work on
+;; The whole concept is based on a single shared Emacs config that can work on
 ;; multiple hosts and have local and shared configs using cloud storage. Using
 ;; its bootstrapping it will sync your configuration across devices.
 ;; NOTE: must have -*- mode:auto-revert -*- for bootstrapping to work properly
@@ -256,24 +257,24 @@ the rant, this was my thinking. Sophistication.
 
 ;; this init file - which will bootstrap your whole local installation
 ;; org-mode + org babel - to document the workflow
-;; el-get + git - to mangage the packages
+;; el-get + git - to manage the packages
 
 ;;
 ;; other tools:
-;; dropbox - used to syncrhoise changes across installations
+;; dropbox - used to synchronize changes across installations
 
 ;; use:
 ;; save this file as your init.el, create a README.org literate init.el
 ;; update the ze variable to point to the appropriate place.
 ;; start emacs
 
-;; to make maitainance easier, this sets up f9 as the faskey prefix for aching
+;; to make maintenance easier, this sets up f9 as the fast-key-key prefix for aching
 ;; this file, your org file, and the untangled org files.
 
 ;; note this is not for the timid yet. It is/was a work in progress. I've posted
-;; this as a gist, so others can use it to create their own lierate emacs. I'm
+;; this as a gist, so others can use it to create their own lie rate Emacs. I'm
 ;; currently looking to integrate this workflow + org mode approach into
-;; spacemace for Space tyrant!.
+;; spacemacs for Space tyrant!.
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; note on my function and variable definitions.
