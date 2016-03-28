@@ -546,9 +546,12 @@ and so is marked as not-tangled.
            ;; scatch is for evauating Elisp after all
            "#+TITLE:Welcome to Emacs Tyrant!\nIgnore the warnings in the other window, they only occur during setup/updates.\nScratch is an now org-mode buffer - here is where you can eval lisp :)\n#+BEGIN_SRC emacs-lisp\n\n\n#+END_SRC\n"
            ))
-    (run-with-idle-timer 0.3 nil (lambda ()
+    (run-with-idle-timer 0.2 nil (lambda ()
                                    (with-current-buffer "*scratch*"
                                      (org-mode)
-                                     (flyspell-mode-off))))
+                                     (flyspell-mode-off)
+                                     (switch-to-buffer "*scratch*")
+                                     )))
     )
+
 #+END_SRC
