@@ -1,4 +1,4 @@
-c# -*- mode: org; mode:auto-revert; -*-
+# -*- mode: org; mode:auto-revert; -*-
 #+TITLE: Emacs Tyrant Configuration
 #+DESCRIPTION: The Tyranny of the default configuration
 #+STARTUP: nohideblocks
