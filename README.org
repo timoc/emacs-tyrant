@@ -306,7 +306,7 @@ the rant, this was my thinking. Sophistication.
   (message "++ set org source directories.")
   (defconst ze:gtd-dir (expand-file-name (concat ze:home-dir "/1-ORG_SHARED/")))
   (defconst ze:org-dir (expand-file-name (concat ze:gtd-dir "/1-PROCESS_GTD/")))
-  (message "-- MEYN orgrc end")
+
   #+END_SRC
 
 *** DONE emacs baseline configuration changes
