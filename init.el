@@ -143,6 +143,12 @@
 ;; config file, to an untangled.el file. If the tangled source does
 ;; not exist or, if the source is older than the generated .el file,
 ;; then load the .el if it exists.
+;;
+;; NOTE: all babel default header arguments are defined here
+;; (org-babel-default-header-args)
+;; Depending on your org-version they may default to :tangle yes or :tangle no.
+;; best to explicitly define the :tangle yes and no in the #+BEGIN_SRC line.
+;;
 (defun ze@load-tangled-config (log-workflow-type untangled &optional tangled)
   ;; calculate untangled version
   (if (and (stringp tangled) (stringp untangled) (file-exists-p tangled) (featurep 'ob-tangle))
@@ -208,14 +214,19 @@
 (defconst ze:emacs-flavour (version))
 (message "++ Emacs Flavour:%s" ze:emacs-flavour)
 
-;; set size of message log to maximum
-(setq message-log-max t)
+;; set base-defaults to:
+(setq make-backup-files nil)        ; stop creating those backup~ files
+(setq auto-save-default nil)        ; stop creating those #auto-save# files
+(setq auto-save-list-file-name nil) 
+(fset 'yes-or-no-p 'y-or-n-p)       ; y/n not yes/no
+(setq global-auto-revert-mode t)    ; stop asking about changed local file
+(setq message-log-max t)           ; set size of message log to maximum
 
 ; setup inital fonts - readable on high dpi monitors
 (set-default-font "monospace-10")
 (set-frame-font   "monospace-10")
 
-;;; os_type;
+;; determine os_type;
 (defconst ze:win32-p (memq system-type '(ms-dos windows-nt cygwin)))
 (defconst ze:linux-p (or (eq system-type 'gnu/linux)(eq system-type 'linux)))
 (defconst ze:console-p (eq (symbol-value 'window-system) nil))
@@ -234,7 +245,7 @@
 ;;+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ;; roots; paths to roots folders
 
-;; Seema silly/overkill, but bitter experience has shown it to be
+;; Seems silly/overkill, but bitter experience has shown it to be
 ;; worth it. It is much easier to have all these things encoded in one
 ;; place, so that if i change them, i do not need to change them
 ;; anywhere else.
@@ -251,8 +262,10 @@
 (defconst ze:pub-dir  (expand-file-name (concat ze:home-dir "/.dotfiles/zemacsen/")))
 ;; make sure pub folder exists.
 (make-directory ze:pub-dir t)
-;; set zemacs root
+;; set zemacs machine local root
 (setq user-emacs-directory ze:pub-dir)
+;; set cache folder in root
+; (setq user-cache-directory (expand-file-name (concat ze:pub-dir "/cache/")))
 
 ;; Boxed directoriy settings
 (defconst ze:box-dir (expand-file-name (concat ze:usr-dir "/box/")))
@@ -300,7 +313,7 @@
 ;;  README.org - the initial org file fast-keys
 (define-key ze:emacs-tangled-config-map [(f9)] 'ze@load-init-el-tangled)
 (define-key ze:emacs-tangled-config-map [(?i)] 'ze@load-init-el-tangled)
-(define-key ze:emacs-tangled-config-map [(fI)] 'ze@load-init-el-untangled)
+(define-key ze:emacs-tangled-config-map [(?I)] 'ze@load-init-el-untangled)
 
 ;; org configuration file
 (defconst ze:init-org-tangled   (expand-file-name (concat ze:dot-dir "orgrc.org")))
@@ -446,6 +459,7 @@
 (setq org-directory ze:org-dir)
 
 (require 'ob-tangle)
+(require 'ob-emacs-lisp)
 (message "== using ob-tangle from org mode :%s" org-version)
 ;; set the languages i want babel to work on before invoking it
 ;; for untangling
@@ -460,11 +474,22 @@
 	(screen . t)     (shell . t)    (sql . t)
 	(sqlite . t)     (table . t)
 	))
+(setq org-src-preserve-indentation t)
+
 ;; set native babel fontification (like mmm mode?)
 (setq org-src-fontify-natively t)
 (setq org-src-tab-acts-natively t)
 ;; don't bug me about evals
 (setq org-confirm-babel-evaluate nil)
+
+;; ensure default header arguments have tangle set, and comments exported
+(setq org-babel-default-header-args
+		(cons '(:tangle . "yes")
+				(assq-delete-all :tangle org-babel-default-header-args)))
+(setq org-babel-default-header-args
+		(cons '(:exports . "code")
+				(assq-delete-all :exports org-babel-default-header-args)))
+
 ;; make babel results blocks uppercase to save confusion
 (setq org-babel-results-keyword "RESULTS")
 
