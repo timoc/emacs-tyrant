@@ -519,6 +519,7 @@
     "GNU Emacs 24.5.1 (x86_64-redhat-linux-gnu, GTK+ Version 3.14.12)\n of 2015-05-07 on buildvm-08.phx2.fedoraproject.org"
     "GNU Emacs 24.5.1 (x86_64-redhat-linux-gnu, GTK+ Version 3.16.6)\n of 2015-09-14 on buildvm-10.phx2.fedoraproject.org"
     "GNU Emacs 24.5.1 (x86_64-redhat-linux-gnu, GTK+ Version 3.18.7)\n of 2016-02-03 on buildhw-05.phx2.fedoraproject.org"
+    "GNU Emacs 24.5.1 (x86_64-pc-linux-gnu, GTK+ Version 3.18.8)\n of 2016-03-04 on lgw01-39, modified by Debian"
 	 ))
 
 (if (not (member ze:emacs-flavour ze:flavour-tested-on))

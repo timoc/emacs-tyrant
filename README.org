@@ -13,7 +13,8 @@
   etc. It is me telling myself why i went down this path and what i
   love and hate about Emacs. You should try it out yourself, its very
   cathartic.
-
+  
+  *Usage:*
   To test out the tyrant for yourself without crapping over your current
   Emacs config method, simply use these shell commands, or similar:
 #+BEGIN_SRC sh :tangle no
@@ -28,8 +29,30 @@ git clone https://github.com/timoc/emacs-tyrant .emacs.d
 HOME=$(pwd) emacs
 #+END_SRC
 
-  enjoy.
+  Then its as simple as replacing my Stockholm symptoms rant with your
+  own rant (advised but not required), and paste your own elisp init.el
+  between the #+BEGIN & #+END SRC tags, then you're done. Re-factor into
+  smaller source code blocks as appropriate to your [[http://en.wiktionary.org/wiki/yak_shaving][yak shaving]]
+  process. see examples below.
+
+  If you don't follow the Big Fscking Org File approach, then you can
+  still use the Tyrant, but you need to put your external modules under
+  the Tyrant's boot-heel. 
+
+  To do this the ze@load-tangled-config function, e.g. i want to load
+  lame-mode-config.org i could use:
+
+#+BEGIN_SRC emacs-lisp :tangle no
+;; load lame-mode from lame source somewhere
+(ze@load-tangled-config "load lame mode config from somewhere " 
+                        (expand-file-name (concat ze:dot-dir "lame-mode-conf.org"))
+                        (expand-file-name (concat ze:untangled-lisp-dir "lame-mode-untangled-config.el")))
+#+END_SRC
+
+  
+  [[http://www.tapir.caltech.edu/~teviet/share-and-enjoy.html][Share and Enjoy]]!
   *Tim O'C*
+  Sirius Cybernetics Corporation Complaints Division
 
 * A rant about Emacs and why i became a config-tyrant
 
