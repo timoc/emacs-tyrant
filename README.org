@@ -5,7 +5,7 @@
 #+CATEGORY: EmacsRC
 #+KEYWORDS: Emacs config git
 
-- Context and Quickstart
+- *Bare Introduction*
 
   This README, the rant below, and the lisp boilerplate about
   sophistication is pretty much as a created it when first making the
@@ -13,14 +13,24 @@
   etc. It is me telling myself why i went down this path and what i
   love and hate about Emacs. You should try it out yourself, its very
   cathartic.
+
+  [[http://www.tapir.caltech.edu/~teviet/share-and-enjoy.html][Share and Enjoy]]!
+
+  *Tim O'C*
+
+  Sirius Cybernetics Corporation Complaints Division
   
-  *Usage:*
+  *Tyrant Test:*
+
   To test out the tyrant for yourself without crapping over your current
   Emacs config method, simply use these shell commands, or similar:
+
 #+BEGIN_SRC sh :tangle no
 mkdir -p testtyrant/tmp; cd testtyrant; git clone https://github.com/timoc/emacs-tyrant .emacs.d ; HOME=$(pwd) emacs
 #+END_SRC
+
 or if you prefer:
+
 #+BEGIN_SRC sh :tangle no
 mkdir testtyrant
 cd testtyrant
@@ -29,11 +39,22 @@ git clone https://github.com/timoc/emacs-tyrant .emacs.d
 HOME=$(pwd) emacs
 #+END_SRC
 
-  Then its as simple as replacing my Stockholm symptoms rant with your
-  own rant (advised but not required), and paste your own elisp init.el
-  between the #+BEGIN & #+END SRC tags, then you're done. Re-factor into
-  smaller source code blocks as appropriate to your [[http://en.wiktionary.org/wiki/yak_shaving][yak shaving]]
-  process. see examples below.
+  *Tyrant Quickstart:*
+
+  It's as simple as
+  - replacing my Stockholm syndrome rant with your own rant (advised but
+    not required) 
+  - paste your own elisp init.el between the #+BEGIN & #+END SRC tags. 
+  - replace these instructions with the notes, keys etc you want to see
+    every time you edit this file 
+
+  Then you're done. 
+
+  Its best to make notes around your code blocks, see examples
+  below. Re-factor into smaller source code blocks as appropriate to
+  your [[http://en.wiktionary.org/wiki/yak_shaving][yak shaving]] process.
+
+  *Tyrant Advanced:*
 
   If you don't follow the Big Fscking Org File approach, then you can
   still use the Tyrant, but you need to put your external modules under
@@ -47,14 +68,36 @@ HOME=$(pwd) emacs
 (ze@load-tangled-config "load lame mode config from somewhere " 
                         (expand-file-name (concat ze:dot-dir "lame-mode-conf.org"))
                         (expand-file-name (concat ze:untangled-lisp-dir "lame-mode-untangled-config.el")))
+
 #+END_SRC
 
-  
-  [[http://www.tapir.caltech.edu/~teviet/share-and-enjoy.html][Share and Enjoy]]!
-  *Tim O'C*
-  Sirius Cybernetics Corporation Complaints Division
+   Remember to add it to the Tyrant f9 fastkey map. 
 
-* A rant about Emacs and why i became a config-tyrant
+#+BEGIN_SRC emacs-lisp :tangle no
+; Use me@ function namespace for own functions
+(defun me@load-lame-tangled () "" (interactive) 
+       (find-file (expand-file-name (concat ze:dot-dir "lame-mode-conf.org"))))
+(defun me@load-lame-untangled () "" (interactive) 
+       (find-file (expand-file-name (concat ze:untangled-lisp-dir "lame-mode-untangled-config.el"))))
+;; machine conf key access
+(define-key ze:emacs-tangled-config-map [(?a)] 'me@load-lame-tangled)
+(define-key ze:emacs-tangled-config-map [(?A)] 'me@load-lame-untangled)
+#+END_SRC
+  
+   *Tyrant Config Default Fastkeys*
+
+   Here are some keys to be getting on with, See help (?) for current
+   keymap list. Here are the important ones to get you off the ground
+   when debugging your Tyrant installation.
+
+   | Keymap | Key | File              |
+   |--------+-----+-------------------|
+   | f9     | ?   | Show Tyrantkeymap |
+   | f9     | f9  | This file         |
+   | f9     | b   | Tyrant init.el    |
+   | f9     | B   | local .bashrc     |
+
+* Rant about Emacs and why i became a config-tyrant
 
   Some people reading this will be like WTF!, why are you still using
   Emacs? We're in a new GUI century! Why not <insert other editor here>.
@@ -75,7 +118,7 @@ HOME=$(pwd) emacs
   to have Emacs key-bindings to keep the dissonance to a reasonable
   level.
 
-  Regardless, I know this but I'm still working with it :)
+  *Regardless! I know this but I'm still working with Emacs! :)*
 
   Why the tyrant? I've been using Emacs for many many years, my hands
   speak its language. I started with Emacs, but then for a long time i
