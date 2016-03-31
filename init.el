@@ -293,7 +293,7 @@
 (make-directory ze:untangled-lisp-dir t)
 
 ;; this file
-(defconst ze:init-conf      (expand-file-name (concat ze:home-dir "init.el")))
+(defconst ze:init-conf      (expand-file-name (concat ze:dot-dir "init.el")))
 
 ;; local machine conf fastkey
 (defun ze@load-init-conf-bootstrapper   () "" (interactive) (find-file ze:init-conf))
@@ -364,8 +364,8 @@
 (defconst ze:save-places-file      (concat ze:hist-file-prefix "-places-E"))
 (defconst ze:autosave-prefix       (concat ze:pub-dir "autosave/saves-"))
 
-;; broswer to use for web links
-(defconst ze:browser-binary        (expand-file-name "~/usr/local/libexec/firefox/firefox"))
+;; broswer to use for web links - i use locally installed firefox
+(defconst ze:browser-binary        (expand-file-name "firefox"))
 
 (defconst ze:package-dir (expand-file-name (concat ze:pub-dir "/elpa/")))
 (setq package-user-dir ze:package-dir)

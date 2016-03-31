@@ -16,9 +16,8 @@
 
   [[http://www.tapir.caltech.edu/~teviet/share-and-enjoy.html][Share and Enjoy]]!
 
-  *Tim O'C*
-
-  Sirius Cybernetics Corporation Complaints Division
+  - *Tim O'C* 
+  Sirius Cybernetics Corporation Complaints Department\n\n
   
   *Tyrant Test:*
 
@@ -599,7 +598,7 @@ and so is marked as not-tangled.
 
   ;; (add-hook 'compilation-finish-functions #'toc@compile-finish)
 #+END_SRC
-*** DONE Projectile project manager + active scratch buffer startup
+* DONE Example Projectile project manager + active scratch buffer startup
   add projectile project management log last projects to startup scratch
   (commented out)
 
@@ -610,7 +609,28 @@ and so is marked as not-tangled.
     (setq initial-scratch-message
           (concat
            ;; scatch is for evauating Elisp after all
-           "#+TITLE:Welcome to Emacs Tyrant!\nIgnore the warnings in the other window, they only occur during setup/updates.\nScratch is an now org-mode buffer - here is where you can eval lisp :)\n#+BEGIN_SRC emacs-lisp\n\n\n#+END_SRC\n"
+           ;; scatch is for evauating Elisp after all
+           "#+TITLE: The Tyrant Welcomes a new citizen\n\n"
+           "\n"
+           "Welcome to the comfort of the downtrodden\n"
+           "Here are some keys to be getting on with, See help (?) for current\n"
+           "key-map list. Here are the important ones to get you off the ground\n"
+           "when debugging your Tyrant installation.\n"
+           "\n"
+           "| Key-map | Key | File                     |\n"
+           "|--------+-----+--------------------------|\n"
+           "| f9     | ?   | Show Tyrant Key-map Keys  |\n"
+           "| f9     | f9  | This file (README.org)   |\n"
+           "| f9     | b   | Tyrant bootstrap init.el |\n"
+           "| f9     | B   | local .bashrc            |\n"
+           "\n"
+           "[[http://www.tapir.caltech.edu/~teviet/share-and-enjoy.html][Share and Enjoy]]!\n\n"
+           "*Tim O'C*\n"
+           "Sirius Cybernetics Corporation Complaints Department\n\n\n\n\n\n"
+           
+           ;; "Scratch is an now org-mode buffer - here is where you can eval lisp :)\n"
+           ;; "#+BEGIN_SRC emacs-lisp\n\n#+END_SRC\n"
+           ;; "Ignore the warnings in the other window, they only occur during setup/updates.\n"
            ))
     (run-with-idle-timer 0.2 nil (lambda ()
                                    (with-current-buffer "*scratch*"
