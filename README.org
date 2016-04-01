@@ -12,13 +12,14 @@
   tyrant. I've updated it for this github release, but left the rant
   etc. It is me telling myself why i went down this path and what i
   love and hate about Emacs. You should try it out yourself, its very
-  cathartic.
+  [[https://en.wikipedia.org/wiki/Catharsis][cathartic]]
 
   [[http://www.tapir.caltech.edu/~teviet/share-and-enjoy.html][Share and Enjoy]]!
 
-  - *Tim O'C* 
-  Sirius Cybernetics Corporation Complaints Department\n\n
+  *Tim O'C* 
+  ~Sirius Cybernetics Corporation - Complaints Department~
   
+
   *Tyrant Test:*
 
   To test out the tyrant for yourself without crapping over your current
@@ -209,7 +210,7 @@ HOME=$(pwd) emacs
 
   The workflow therefore is something like this:
 
-#+BEGIN_SRC
+#+BEGIN_SRC basic :tangle no
   10 You work on a project, and develop a workflow/process as you work.
   20 You pause your project work to tweak your Emacs config to improve your workflow/process for the project.
   30 IF *yak shaving* THEN
@@ -626,7 +627,8 @@ and so is marked as not-tangled.
            "\n"
            "[[http://www.tapir.caltech.edu/~teviet/share-and-enjoy.html][Share and Enjoy]]!\n\n"
            "*Tim O'C*\n"
-           "Sirius Cybernetics Corporation Complaints Department\n\n\n\n\n\n"
+           "~Sirius Cybernetics Corporation - Complaints Department~\n"
+           "\n\n\n\n\n"
            
            ;; "Scratch is an now org-mode buffer - here is where you can eval lisp :)\n"
            ;; "#+BEGIN_SRC emacs-lisp\n\n#+END_SRC\n"
